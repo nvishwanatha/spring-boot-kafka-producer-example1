@@ -1,0 +1,20 @@
+org.springframework.context.ApplicationContextException:
+Failed to start bean 'org.springframework.kafka.config.internalKafkaListenerEndpointRegistry';
+
+Error:
+
+org.springframework.context.applicationcontextexception:
+failed to start bean 'org.springframework.kafka.config.internalkafkalistenerendpointregistry';
+nested exception is java.lang.illegalstateexception:
+no group.id found in consumer config, container properties, or @kafkalistener annotation;
+a group.id is required when group management is used.
+
+Solution :
+Add groupId in the consumer Listerner
+
+ GroupId Can be found in the consumer.properties in the install folder
+
+ @KafkaListener(topics="kafka-Example",groupId="test-consumer-group")
+
+
+
