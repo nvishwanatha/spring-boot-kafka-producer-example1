@@ -1,0 +1,34 @@
+
+https://kafka.apache.org/quickstart
+1.install Kafka in local
+
+$ tar -xzf kafka_2.13-3.2.1.tgz
+$ cd kafka_2.13-3.2.1
+
+2. # Start the ZooKeeper service
+   # Note: Soon, ZooKeeper will no longer be required by Apache Kafka.
+   $ bin/zookeeper-server-start.sh config/zookeeper.properties
+
+3.# Start the Kafka broker service
+  $ bin/kafka-server-start.sh config/server.properties
+
+4.$ bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092
+
+5.$ bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+  Topic:quickstart-events  PartitionCount:1    ReplicationFactor:1 Configs:
+      Topic: quickstart-events Partition: 0    Leader: 0   Replicas: 0 Isr: 0
+
+6. produce Message
+
+$ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+This is my first event
+This is my second event
+
+7. Read Message
+
+$ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+This is my first event
+This is my second event
+
+
+bin/kafka-console-consumer.sh --topic kafka-Example  --from-beginning --bootstrap-server localhost:9092
